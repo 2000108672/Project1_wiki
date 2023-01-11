@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+{% block body %}
+
+<div style="text-align: left">
+    <a href="{% url 'edit' title %}" class="badge badge-info">Edit This Page</a>
+</div>
+
+<div class="container left-align">
+    {% if content %}
+        <div>{{ content|safe }}</div>
+    {% else %}
+        <h1 {% if isNotFound %} style="font-size: 2em; margin-left:-75px;" {% endif %}>Page was not found</h1>
+    {% endif %}
+</div>
+
+{% endblock %}
