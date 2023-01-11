@@ -35,3 +35,10 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+def search_entries(term):
+    """
+    Returns a sorted list of all encyclopedia entry names containing the search term.
+    """
+    _, filenames = default_storage.listdir("entries")
+    return sorted(re.sub(r"\.md$", "", filename) for filename in filenames if filename.endswith(".md") and term.lower() in filename.lower())
